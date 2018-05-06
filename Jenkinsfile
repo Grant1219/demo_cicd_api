@@ -9,7 +9,7 @@ pipeline {
             post {
                 success {
                     sh 'echo "build succeeded"'
-                    archiveArtifacts artifacts: dist/*, fingerprint: true
+                    archiveArtifacts artifacts: 'dist/*', fingerprint: true
                 }
             }
         }
