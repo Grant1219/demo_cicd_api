@@ -3,8 +3,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'echo "building tuxinator_api..."'
-                sh 'python setup.py sdist'
+                withPythonEnv('python') {
+                    sh 'echo "building tuxinator_api..."'
+                    pysh 'python setup.py sdist'
+                }
             }
             post {
                 success {
