@@ -8,6 +8,11 @@ pipeline {
                     pysh 'python setup.py test'
                 }
             }
+            post {
+                success {
+                    sh 'echo "testing succeeded"'
+                }
+            }
         }
         stage('Build') {
             steps {
@@ -18,7 +23,7 @@ pipeline {
             }
             post {
                 success {
-                    sh 'echo "testing succeeded"'
+                    sh 'echo "building succeeded"'
                     withPythonEnv('python') {
                         pysh 'python setup.py sdist upload'
                     }
